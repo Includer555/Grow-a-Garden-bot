@@ -10,6 +10,7 @@ seeds_button_pos = [697, 125]
 scroll_bar_pos = [1310, 367]
 menu_size_pos = [594, 309]
 offscreen_pos = [2500, 500]
+scrolls = 12
 
 bought_items = 0
 bought_items_file = "BoughtItemCount.txt"
@@ -76,7 +77,7 @@ def BuyThing(index):
         print("fail")
 
     if location:
-        moveto_pos = [center[0]-100, center[1]+120]
+        moveto_pos = [center[0]-270, center[1]+120]
         pyautogui.moveTo(offscreen_pos[0],offscreen_pos[1])
         pyautogui.doubleClick()
         pyautogui.moveTo(moveto_pos)
@@ -91,5 +92,5 @@ print("#\/\/\/\/\/\/\/\/\/\/GROW A GARDEN BOT\/\/\/\/\/\/\/\/\/\/\/\/\/\/#")
 print("Starting in 5 seconds...")
 time.sleep(5)
 while (True):
-    DragScrollBar(scroll_bar_pos[0], scroll_bar_pos[1], 500, 9)
-    time.sleep(300)
+    DragScrollBar(scroll_bar_pos[0], scroll_bar_pos[1], 400, scrolls)
+    time.sleep(10)
