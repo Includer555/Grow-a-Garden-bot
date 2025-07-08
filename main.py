@@ -10,8 +10,9 @@ seeds_button_pos = [697, 125]
 scroll_bar_pos = [1310, 367]
 menu_size_pos = [594, 309]
 offscreen_pos = [2500, 500]
-scrolls = 12
+scrolls = 20
 
+scans = 1
 bought_items = 0
 bought_items_file = "BoughtItemCount.txt"
 
@@ -28,7 +29,10 @@ def ClickButton(x, y):
 
 def DragScrollBar(x, y, scroll_amount, times):
     global bought_items
+    global scans
     bought_items = 0
+
+    print(f"----------------------------🔎SCAN {scans} BEGIN🔎-----------------------------------")
 
     pyautogui.moveTo(offscreen_pos[0],offscreen_pos[1],0)
     pyautogui.doubleClick()
@@ -48,6 +52,9 @@ def DragScrollBar(x, y, scroll_amount, times):
     f = open(bought_items_file, "w")
     f.write(str(bought_items))
     f.close()
+    
+    scans+= 1
+    print(f"----------------------------⚠️SCAN {scans} END⚠️-----------------------------------\n\n\n")
 
 def BuyThing(index):
     location = None
@@ -57,7 +64,7 @@ def BuyThing(index):
     try:
         location = pyautogui.locateOnScreen(dollar_symbol, confidence=0.8)
     except:
-        print("image not found!")
+        print("[❌] Not in stock!")
         return
 
     if (location):
@@ -77,7 +84,7 @@ def BuyThing(index):
         print("fail")
 
     if location:
-        moveto_pos = [center[0]-270, center[1]+120]
+        moveto_pos = [center[0]-280, center[1]+120]
         pyautogui.moveTo(offscreen_pos[0],offscreen_pos[1])
         pyautogui.doubleClick()
         pyautogui.moveTo(moveto_pos)
@@ -86,10 +93,10 @@ def BuyThing(index):
         for i in range(10):
             pyautogui.doubleClick()
 
-    print(center)
+    print(f"[✅] Found in stock seed at (x:{center[0]} y:{center[1]})")
 
-print("#\/\/\/\/\/\/\/\/\/\/GROW A GARDEN BOT\/\/\/\/\/\/\/\/\/\/\/\/\/\/#")
-print("Starting in 5 seconds...")
+print("#\/\/\/\/\/\/\/\/\/\/🌱GROW A GARDEN BOT🌱\/\/\/\/\/\/\/\/\/\/\/\/\/\/#")
+print("[📢] Starting in 5 seconds...")
 time.sleep(5)
 while (True):
     DragScrollBar(scroll_bar_pos[0], scroll_bar_pos[1], 400, scrolls)
