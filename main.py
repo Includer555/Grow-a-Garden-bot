@@ -53,8 +53,8 @@ def DragScrollBar(x, y, scroll_amount, times):
     f.write(str(bought_items))
     f.close()
     
-    scans+= 1
     print(f"----------------------------⚠️SCAN {scans} END⚠️-----------------------------------\n\n\n")
+    scans+= 1
 
 def BuyThing(index):
     location = None
