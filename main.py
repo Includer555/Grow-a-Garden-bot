@@ -2,6 +2,7 @@ import pyautogui
 import pyscreeze
 import time
 import keyboard
+import os
 
 dollar_symbol = "DollarSign.png"
 buy_btn = "BuyBTN.png"
@@ -31,6 +32,7 @@ def DragScrollBar(x, y, scroll_amount, times):
     global bought_items
     global scans
     bought_items = 0
+    os.system("cls")
 
     print(f"----------------------------🔎SCAN {scans} BEGIN🔎-----------------------------------")
 
@@ -95,7 +97,7 @@ def BuyThing(index):
 
     print(f"[✅] Found in stock seed at (x:{center[0]} y:{center[1]})")
 
-print("#\/\/\/\/\/\/\/\/\/\/🌱GROW A GARDEN BOT🌱\/\/\/\/\/\/\/\/\/\/\/\/\/\/#")
+print("\n\n\n\n🌱GROW A GARDEN BOT🌱")
 print("[📢] Starting in 5 seconds...")
 time.sleep(5)
 while (True):
